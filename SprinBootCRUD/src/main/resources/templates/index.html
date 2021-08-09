@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employees List</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+ integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+  crossorigin="anonymous"/>
+</head>
+<body>
+<h1 align="left">Employee List</h1>
+<a th:href="@{/showEmployeeForm}" class="btn btn-primary">Add Employee</a>
+<div align="center" class="container my-2">
+
+<table class="table table-bordered table-dark">
+<thead>
+<tr>
+<th scope="col" class="p-3 mb-2 bg-info text-white">first name</th>
+<th scope="col" class="p-3 mb-2 bg-info text-white">second name</th>
+<th scope="col" class="p-3 mb-2 bg-info text-white">mail</th>
+<th scope="col" class="p-3 mb-2 bg-info text-white">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="employee:${listofemployees}">
+<td th:text="${employee.fname}"></td>
+<td th:text="${employee.lname}"></td>
+<td th:text="${employee.mail}"></td>
+<td class="btn btn-primary"><a th:href="@{/updateEmployeeForm/{id}(id=${employee.id})}">Update</a></td>
+<td class="btn btn-danger"><a th:href="@{/delteEmployeeForm/{id}(id=${employee.id})}">Delete</a></td>
+</tbody>
+</table>
+</div>
+
+</body>
+</html>
